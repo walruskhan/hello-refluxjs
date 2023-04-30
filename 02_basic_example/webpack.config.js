@@ -15,7 +15,7 @@ module.exports = {
   resolve: {
     // Add `.ts` and `.tsx` as a resolvable extension.
     // Otherwise extension required on imports (e.g. import * as foo from 'myfile.ts'
-    extensions: [".js", "jsx"], // note if using webpack 1 you'd also need a '' in the array as well
+    extensions: [".js", ".jsx"], // note if using webpack 1 you'd also need a '' in the array as well
   },
   devtool: "inline-source-map",
   devServer: {
@@ -29,6 +29,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: "Example Application",
+      template: 'template.html'
     }),
     new WebpackManifestPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -36,7 +37,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: "babel-loader",
